@@ -1,0 +1,1 @@
+# Guide-to-muxless-hybrid-laptops-for-arch-hyprland-and-prime
