@@ -77,7 +77,6 @@ prime-run <application-name>
 To verify which GPU is being used:
 
 `
-Bash
 glxinfo | grep "OpenGL renderer"          # Should show iGPU
 prime-run glxinfo | grep "OpenGL renderer" # Should show NVIDIA
 `
