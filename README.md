@@ -25,8 +25,11 @@ The goal of this setup is to allow the iGPU to handle all routine desktop tasks 
 To ensure proper Wayland support and prevent the dGPU from waking up unnecessarily for the framebuffer, use the following kernel parameters:
 
 **File:** `/etc/default/grub`
-
-GRUB_CMDLINE_LINUX_DEFAULT="... nvidia_drm.fbdev=0"
+```
+```grub 
+GRUB_CMDLINE_LINUX_DEFAULT="splash loglevel=3" #nvidia_drm.fbdev=0" #nvidia.NVreg_PreserveVideoMemoryAllocations=1" 
+```
+```
 
 [!IMPORTANT]
 nvidia_drm.fbdev=0 is critical. Setting this to 1 can prevent the GPU from entering deep sleep states.
