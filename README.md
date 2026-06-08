@@ -50,29 +50,38 @@ These variables configure how applications interact with your drivers. By commen
 File: ~/.config/uwsm/env-hyprland
 code
 ```
-export GBM_BACKEND=nvidia-drm
-# Commented to allow iGPU rendering by default
-# export __GLX_VENDOR_LIBRARY_NAME=nvidia 
-export LIBVA_DRIVER_NAME=nvidia 
-export XDG_SESSION_TYPE=wayland 
+```
+```
+export TERMINAL=kitty
+
+export AQ_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
+#export AQ_DRM_DEVICES=/dev/dri/by-path/pci-0000:00:02.0-card:/dev/dri/by-path/pci-0000:01:00.0-card
+
+export NVD_BACKEND=direct
+
+
+#export GBM_BACKEND=nvidia-drm
+
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export LIBVA_DRIVER_NAME=nvidia
+export XDG_SESSION_TYPE=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# Multi-GPU Priority (iGPU:dGPU)
-export AQ_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
+export XDG_MENU_PREFIX=arch-
 
-# Cursor Theming
-export XCURSOR_SIZE=24 
-export HYPRCURSOR_SIZE=24 
-export XCURSOR_THEME=Adwaita 
+export XCURSOR_SIZE=24
+export HYPRCURSOR_SIZE=24
+export XCURSOR_THEME=Adwaita
 export HYPRCURSOR_THEME=Adwaita
-```
-
 5. Initramfs (mkinitcpio)
 Configured for BTRFS and standard encryption hooks.
 File: /etc/mkinitcpio.conf
-
 ```
-MODULES=(btrfs) 
+```
+```
+
+MODULES=(btrfs i915 nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+
 HOOKS=(base udev autodetect microcode modconf kms keyboard consolefont block encrypt filesystem fsck) # this setup is for encrypted drive
 ```
 🚀 Usage
